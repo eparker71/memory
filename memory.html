@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Memory</title>
+		<link rel="stylesheet" href="memory.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+
+	<body>
+		<header>
+			<div id="score-container">
+				<h2>Score: <span id="score"></span></h2>
+			</div>
+		</header>
+		<section>
+			<article>
+				<div id="card-grid" class="wrapper">
+				</div>
+			</article>
+		</section>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="memory.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+		<script id="card-template" type="text/x-handlebars-template">
+			{{#each icons}}
+				<div class="box">
+					<div class="flip-card">
+						<div class="flip-card-inner">
+							<div class="flip-card-front">
+								<p></p>
+							</div>
+							<div class="flip-card-back">
+								<p><i class="fa {{icon}} fa-2x"></i></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</script>
+	</body>
+
+</html>
