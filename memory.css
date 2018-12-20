@@ -38,9 +38,6 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* .flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-} */
 .flipped {
   transform: rotateY(180deg);
 }
@@ -71,8 +68,6 @@ body {
 
 #score-container {
   border-radius: 10px;
-  /* background-color: #000; */
-  /* color: #fff; */
   padding: 2px 2px;
   margin-bottom: 10px;
   width: 300px;
