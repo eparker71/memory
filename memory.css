@@ -1,18 +1,19 @@
 body {
   margin: 40px;
+  background-color: burlywood;
 }
 
 .wrapper {
   display: grid;
   grid-template-columns: 120px 120px 120px 120px 120px 120px;
   grid-gap: 10px;
-  background-color: #fff;
+  background-color: burlywood;
   color: #444;
 }
 
 .box {
   border-radius: 25px;
-  background-color: #fff;
+  background-color: burlywood;
   color: #fff;
   border-radius: 5px;
   /* padding: 20px; */
@@ -52,7 +53,7 @@ body {
 
 .flip-card-front {
   background-color: #bbb;
-  background: url(coral.png);
+  background: url(images/coral.png);
   background-position: left top;
   background-repeat: repeat;
   color: black;
