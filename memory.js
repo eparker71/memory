@@ -5,7 +5,6 @@ var iconList = [
   { icon: "fa-snowflake-o" },
   { icon: "fa-bank" },
   { icon: "fa-instagram" },
-  { icon: "fa-bank" },
   { icon: "fa-joomla" },
   { icon: "fa-gavel" },
   { icon: "fa-bomb" },
@@ -71,37 +70,52 @@ $(document).ready(function () {
 
   var stack = [];
   var found = 0;
+  var foundpairs = [];
+  var cards_visible = false;
 
-  $('#flipcards').change(function(){
-    if(this.checked){
+  $('#flipcards-btn').click(function(){
+    if(!cards_visible){
+      cards_visible = true;
+      this.innerHTML = "Hide Cards"
       $('.flip-card-inner').addClass('flipped');
     }
     else {
-      $('.flip-card-inner').removeClass('flipped');
+      cards_visible = false;
+      this.innerHTML = "View Cards"
+      $('.flip-card-inner').each(function(){
+        var id = $(this).find("i").attr("class");
+        if(!foundpairs.includes(id)){
+            $(this).removeClass('flipped');
+        }
+      });
     }
   });
-  
 
-  $('.flip-card-inner').click(function () {
-      if(stack.length < 2) {
-        stack.push($(this));
-        $(this).addClass('flipped');
-        if (stack.length == 2) {
-          if (stack[0].find("i").attr("class") == stack[1].find("i").attr("class")) {
-            found += 1;
-            $('#score').html(found);
-            
-          } else {
-            var card1 = stack[0];
-            var card2 = stack[1];
-            setTimeout(function () {
-              card1.removeClass('flipped');
-              card2.removeClass('flipped');
-            }, 1000);
-            
-          }
-          stack = [];
+
+    $('.flip-card-inner').click(function () {
+        if(stack.length < 2) {
+            stack.push($(this));
+            $(this).addClass('flipped');
+            if (stack.length == 2) {
+                if (stack[0].find("i").attr("class") == stack[1].find("i").attr("class")) {
+                    found += 1;
+                    foundpairs.push(stack[0].find("i").attr("class"));
+                    if(found > 2) {
+                        $('#score').html(found + " pairs");
+                    }
+                    else {
+                    $('#score').html(found + " pair");
+                    }
+                } else {
+                    var card1 = stack[0];
+                    var card2 = stack[1];
+                    setTimeout(function () {
+                    card1.removeClass('flipped');
+                    card2.removeClass('flipped');
+                    }, 1000);
+                }
+                stack = [];
+            }
         }
-      }
-  });
+    });
 });
