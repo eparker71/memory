@@ -1,14 +1,28 @@
 body {
-  margin: 40px;
+  margin: 20px;
   background-color: burlywood;
+  color: #444;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+header {
+  font-size: 35px;
+}
+
+path {
+  fill: transparent;
+}
+
+text {
+  fill: #444;
 }
 
 .wrapper {
   display: grid;
-  grid-template-columns: 120px 120px 120px 120px 120px 120px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 10px;
   background-color: burlywood;
-  color: #444;
+  clear: both;
 }
 
 .box {
@@ -62,14 +76,21 @@ body {
 
 .flip-card-back {
   background-color: #2980b9;
-  color: white;
+  color: #fff;
   transform: rotateY(180deg);
   z-index: 1;
 }
 
 #score-container {
   border-radius: 10px;
-  padding: 2px 2px;
-  margin-bottom: 10px;
-  width: 300px;
+  color: #fff;
+  background-color: #444;
+  padding-left: 25px;
+  padding-right: 50px;
+  margin: 1em 1em;
+  float: left;
+}
+
+#game-controls {
+  float: right;
 }

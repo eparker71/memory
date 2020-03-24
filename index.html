@@ -10,9 +10,21 @@
 
 	<body>
 		<header>
+			<svg viewBox="0 0 500 175">
+				<path id="curve" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
+				<text width="500">
+				  <textPath xlink:href="#curve">
+					Welcome to the memory game
+				  </textPath>
+				</text>
+			</svg>
+			
 			<div id="score-container">
-				
-				<div class="well"><h2>Score: <span id="score"></span></h2></div>
+				Score: <span id="score"></span>
+			</div>
+			<div id="game-controls">
+				<input type="checkbox" id="flipcards" name="flipcards" value="true">
+				<label for="flipcards">View all cards</label>
 			</div>
 		</header>
 		<section>
@@ -42,5 +54,4 @@
 			{{/each}}
 		</script>
 	</body>
-
 </html>
