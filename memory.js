@@ -1,10 +1,10 @@
 var iconList = [
+  {},
   { icon: "fa-thermometer" },
   { icon: "fa-bicycle" },
   { icon: "fa-instagram" },
   { icon: "fa-snowflake-o" },
   { icon: "fa-bank" },
-  { icon: "fa-instagram" },
   { icon: "fa-joomla" },
   { icon: "fa-gavel" },
   { icon: "fa-bomb" },
@@ -39,8 +39,29 @@ var iconList = [
   { icon: "fa-life-ring"}
 ];
 
-var iconListCopy = iconList.slice(0);
-var iconArray = iconList.concat(iconListCopy);
+function selectGameIcons(iconList){
+  var gameBoard = [];
+  var randNum;
+  var seenList = [];
+
+  while(gameBoard.length < 20) {
+    randNum = Math.floor((Math.random() * (iconList.length-1)) + 1);
+    if(!seenList.includes(randNum)){
+      seenList.push(randNum);
+      gameBoard.push(iconList[randNum]);
+    }
+
+  }
+  
+  var gameBoardCopy = gameBoard.slice(0);
+
+  return gameBoard.concat(gameBoardCopy);
+  
+}
+
+
+var gameBoard = selectGameIcons(iconList);
+
 
 // implementation of the Fisher-Yates Shuffle
 // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
@@ -56,14 +77,20 @@ function shuffle(array) {
   return array;
 }
 
+/**
+ * 
+ * @param {*} iconArray 
+ */
+function buildCardGrid(gameBoard) {
 
-$(document).ready(function () {
   var source = document.getElementById("card-template").innerHTML;
+
   var template = Handlebars.compile(source);
 
-  // doing a double shuffle
+  // doing a double shuffle, a single shuffle does
+  // not provide enough randomness in the results
   var context = {
-    icons: shuffle( shuffle(iconArray) )
+    icons: shuffle( shuffle(gameBoard) )
   };
 
   Handlebars.registerHelper('icon', function () {
@@ -71,13 +98,20 @@ $(document).ready(function () {
     return new Handlebars.SafeString(icon);
   });
   var html = template(context);
-  document.getElementById('card-grid').innerHTML = html;
+
+  return html;
+};
+
+$(document).ready(function () {
 
   var stack = [];
   var found = 0;
   var foundpairs = [];
   var clicked = [];
   var cards_visible = false;
+
+  var html = buildCardGrid(gameBoard);
+  document.getElementById('card-grid').innerHTML = html;
 
   $('#flipcards-btn').click(function(){
     if(!cards_visible){
@@ -101,7 +135,7 @@ $(document).ready(function () {
   $('.flip-card-inner').click(function () {
     var iconId = $(this).find("i").attr("id");
     if(!foundpairs.includes(iconId)){ 
-      if(!clicked.includes(iconId)) {å
+      if(!clicked.includes(iconId)) {
         if(stack.length < 2) {
             stack.push($(this));
             clicked.push($(this).find("i").attr("id"));
