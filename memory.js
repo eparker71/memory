@@ -39,6 +39,10 @@ var iconList = [
   { icon: "fa-life-ring"}
 ];
 
+/**
+ * 
+ * @param {*} iconList 
+ */
 function selectGameIcons(iconList){
   var gameBoard = [];
   var randNum;
@@ -52,19 +56,18 @@ function selectGameIcons(iconList){
     }
 
   }
-  
   var gameBoardCopy = gameBoard.slice(0);
-
   return gameBoard.concat(gameBoardCopy);
   
 }
 
-
-var gameBoard = selectGameIcons(iconList);
-
-
-// implementation of the Fisher-Yates Shuffle
-// https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+/**
+ * 
+ * @param {*} array
+ * 
+ * implementation of the Fisher-Yates Shuffle
+ * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle 
+ */
 function shuffle(array) {
   var m = array.length, t, i;
 
@@ -84,7 +87,6 @@ function shuffle(array) {
 function buildCardGrid(gameBoard) {
 
   var source = document.getElementById("card-template").innerHTML;
-
   var template = Handlebars.compile(source);
 
   // doing a double shuffle, a single shuffle does
@@ -98,9 +100,10 @@ function buildCardGrid(gameBoard) {
     return new Handlebars.SafeString(icon);
   });
   var html = template(context);
-
   return html;
 };
+
+
 
 $(document).ready(function () {
 
@@ -109,7 +112,8 @@ $(document).ready(function () {
   var foundpairs = [];
   var clicked = [];
   var cards_visible = false;
-
+  
+  var gameBoard = selectGameIcons(iconList);
   var html = buildCardGrid(gameBoard);
   document.getElementById('card-grid').innerHTML = html;
 
