@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "./deploy.sh",
+            "command": "source ~/.profile; ./deploy.sh",
             "args": [],
             "group": {
                 "kind": "build",

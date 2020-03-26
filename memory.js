@@ -31,7 +31,12 @@ var iconList = [
   { icon: "fa-wheelchair" },
   { icon: "fa-trash" },
   { icon: "fa-tree"},
-  { icon: "fa-rocket"}
+  { icon: "fa-rocket"},
+  { icon: "fa-eyedropper"},
+  { icon: "fa-eye"},
+  { icon: "fa-diamond"},
+  { icon: "fa-hashtag"},
+  { icon: "fa-life-ring"}
 ];
 
 var iconListCopy = iconList.slice(0);
@@ -71,6 +76,7 @@ $(document).ready(function () {
   var stack = [];
   var found = 0;
   var foundpairs = [];
+  var clicked = [];
   var cards_visible = false;
 
   $('#flipcards-btn').click(function(){
@@ -91,16 +97,20 @@ $(document).ready(function () {
     }
   });
 
-
-    $('.flip-card-inner').click(function () {
+ 
+  $('.flip-card-inner').click(function () {
+    var iconId = $(this).find("i").attr("id");
+    if(!foundpairs.includes(iconId)){ 
+      if(!clicked.includes(iconId)) {å
         if(stack.length < 2) {
             stack.push($(this));
+            clicked.push($(this).find("i").attr("id"));
             $(this).addClass('flipped');
             if (stack.length == 2) {
                 if (stack[0].find("i").attr("class") == stack[1].find("i").attr("class")) {
                     found += 1;
                     foundpairs.push(stack[0].find("i").attr("class"));
-                    if(found > 2) {
+                    if(found > 1) {
                         $('#score').html(found + " pairs");
                     }
                     else {
@@ -113,9 +123,17 @@ $(document).ready(function () {
                     card1.removeClass('flipped');
                     card2.removeClass('flipped');
                     }, 1000);
-                }
-                stack = [];
-            }
+              }
+              stack = [];
+              clicked = [];
+          }
         }
-    });
+      }
+    }
+    else { alert("Already clicked");}
+  });
+
+
+
+
 });

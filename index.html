@@ -3,9 +3,12 @@
 
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0, maximum-scale=1.0" />
 		<title>Memory</title>
 		<link rel="stylesheet" href="memory.css" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/2078e3bfb9.css?v=1234">
+
 	</head>
 
 	<body>
@@ -45,7 +48,7 @@
 								<p></p>
 							</div>
 							<div class="flip-card-back">
-								<p><i class="fa {{icon}} fa-2x"></i></p>
+								<p><i id="icon-{{@index}}" class="fa {{icon}} fa-2x"></i></p>
 							</div>
 						</div>
 					</div>
