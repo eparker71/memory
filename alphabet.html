@@ -4,9 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0, maximum-scale=1.0" />
-	<title>Memory Games</title>
+	<title>Memory</title>
 	<link rel="stylesheet" href="memory.css" />
-	<link rel="stylesheet" href="shapes.css" />
+	<link rel="stylesheet" href="alpha.css" />
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/2078e3bfb9.css?v=1234">
 
@@ -14,20 +14,20 @@
 
 <body>
 	<header>
-		<nav class="navbar">
-			<a class="active" href="index.html">Shapes</a>
-			<a href="alphabet.html">Letters</a>
-		</nav>
+		<div class="navbar">
+			<a href="index.html">Shapes</a>
+			<a class="active" href="alphabet.html">Letters</a>
+		</div>
 		<br />
-		<p>Click on the cards and find all the matching pairs to win!</p>
+		<p>Click on the cards and match the uppercase letter with it's lowercase letter. (ex. A, a) </p>
 		<div id="score-container">
 			You Found <span id="score"></span>
 		</div>
 		
 	</header>
-	<div id="game-controls">
+	<nav id="game-controls">
 			<button class="flip-card-btn" id="flipcards-btn">View cards</button>
-	</div>
+	</nav>
 	<section>
 		<article>
 			<div id="card-grid" class="wrapper">
@@ -37,7 +37,7 @@
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="memory.js"></script>
+	<script type="text/javascript" src="memoryV2.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js">
 	</script>
 	<script id="card-template" type="text/x-handlebars-template">

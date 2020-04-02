@@ -190,7 +190,6 @@ $(document).ready(function () {
 
     $('.thing').each(function (index) {
         $(this).attr("id", index);
-        console.log(index);
     });
 
     $('#flipcards-btn').click(function () {

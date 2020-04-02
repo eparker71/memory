@@ -1,0 +1,15 @@
+
+.flip-card-front {
+    background: url(images/coral.png);
+    background-position: left top;
+    background-repeat: repeat;
+    z-index: 1;
+  }
+  
+.flip-card-back {
+    /* background: url(images/paper.png); */
+    background-color: cadetblue;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    z-index: 2;
+}
