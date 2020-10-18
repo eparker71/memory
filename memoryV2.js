@@ -1,23 +1,35 @@
 'use strict';
 
-var d = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
-var iconList = []
-
-for(var i=0; i < d.length;i++){
-    var iconStr = '<span class="icon thing" data-value="'+i+'">'+d[i]+'</span>';
-    var iconObj = { icon: iconStr};
-    iconList.push(iconObj);
-}
-for(var i=0; i < d.length;i++){
-    var iconStr = '<span class="icon thing" data-value="'+i+'">'+d[i].toLowerCase()+'</span>';
-    var iconObj = { icon: iconStr};
-    iconList.push(iconObj);
-}
-
+var letterList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 /**
  * 
+ * @param {*} list 
+ */
+function buildLetters(list) {
+
+    var iconList = [];
+
+    for (var i = 0; i < list.length; i++) {
+        var iconStr = '<span class="icon thing" data-value="' + i + '">' + list[i] + '</span>';
+        var iconObj = {
+            icon: iconStr
+        };
+        iconList.push(iconObj);
+    }
+    for (var i = 0; i < list.length; i++) {
+        var iconStr = '<span class="icon thing" data-value="' + i + '">' + list[i].toLowerCase() + '</span>';
+        var iconObj = {
+            icon: iconStr
+        };
+        iconList.push(iconObj);
+    }
+
+    return iconList;
+}
+
+/**
+ *
  * @param {*} iconList 
  */
 function selectGameIcons(iconList) {
@@ -38,9 +50,9 @@ function selectGameIcons(iconList) {
 }
 
 /**
- * 
+ *
  * @param {string[]} array
- * 
+ *
  * implementation of the Fisher-Yates Shuffle
  * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle 
  */
@@ -85,6 +97,7 @@ $(document).ready(function () {
     var clicked = [];
     var cards_visible = false;
 
+    var iconList = buildLetters(letterList);
     var html = buildCardGrid(iconList);
     document.getElementById('card-grid').innerHTML = html;
 

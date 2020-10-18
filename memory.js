@@ -211,17 +211,21 @@ $(document).ready(function () {
 
 
     $('.flip-card-inner').click(function () {
+
         var iconId = $(this).find("i").attr("id");
-        if (!foundpairs.includes(iconId)) {
+        var iconClass = $(this).find("i").attr("class");
+
+        if (!foundpairs.includes(iconClass)) {
             if (!clicked.includes(iconId)) {
                 if (stack.length < 2) {
                     stack.push($(this));
-                    clicked.push($(this).find("i").attr("id"));
+                    clicked.push(iconId);
                     $(this).addClass('flipped');
                     if (stack.length == 2) {
-                        if (stack[0].find("i").attr("class") == stack[1].find("i").attr("class")) {
+                        var prevIconClass = stack[0].find("i").attr("class");
+                        if (prevIconClass == iconClass) {
                             found += 1;
-                            foundpairs.push(stack[0].find("i").attr("class"));
+                            foundpairs.push(iconClass);
                             if (found > 1) {
                                 $('#score').html(found + " pairs");
                             } else {
@@ -240,8 +244,6 @@ $(document).ready(function () {
                     }
                 }
             }
-        } else {
-            alert("Already clicked");
         }
     });
 });
