@@ -9,7 +9,7 @@
 .flip-card-back {
     color: #000;
     background: url(images/old-paper-border.svg) no-repeat center;
-    /* background-color: #f7786b; */
+    background-color: #DAF7A6;
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
     z-index: 2;
