@@ -30,27 +30,6 @@ function buildLetters(list) {
 
 /**
  *
- * @param {*} iconList 
- */
-function selectGameIcons(iconList) {
-    var gameBoard = [];
-    var randNum;
-    var seenList = [];
-
-    while (gameBoard.length < 20) {
-        randNum = Math.floor((Math.random() * (iconList.length - 1)) + 1);
-        if (!seenList.includes(randNum)) {
-            seenList.push(randNum);
-            gameBoard.push(iconList[randNum]);
-        }
-    }
-    var gameBoardCopy = gameBoard.slice(0);
-    var newBoard = gameBoard.concat(gameBoardCopy);
-    return newBoard;
-}
-
-/**
- *
  * @param {string[]} array
  *
  * implementation of the Fisher-Yates Shuffle
@@ -98,6 +77,7 @@ $(document).ready(function () {
     var cards_visible = false;
 
     var iconList = buildLetters(letterList);
+    var totalPairs = letterList.length;
     var html = buildCardGrid(iconList);
     document.getElementById('card-grid').innerHTML = html;
 
@@ -140,7 +120,9 @@ $(document).ready(function () {
                         if (prevValue == value) {
                             found += 1;
                             foundpairs.push(value);
-                            if (found > 1) {
+                            if (found === totalPairs) {
+                                $('#score').html("You Win!");
+                            } else if (found > 1) {
                                 $('#score').html(found + " pairs");
                             } else {
                                 $('#score').html(found + " pair");

@@ -125,7 +125,7 @@ function selectGameIcons(iconList) {
     var seenList = [];
 
     while (gameBoard.length < 20) {
-        randNum = Math.floor((Math.random() * (iconList.length - 1)) + 1);
+        randNum = Math.floor(Math.random() * iconList.length);
         if (!seenList.includes(randNum)) {
             seenList.push(randNum);
             gameBoard.push(iconList[randNum]);
@@ -226,7 +226,9 @@ $(document).ready(function () {
                         if (prevIconClass == iconClass) {
                             found += 1;
                             foundpairs.push(iconClass);
-                            if (found > 1) {
+                            if (found === gameBoard.length / 2) {
+                                $('#score').html("You Win!");
+                            } else if (found > 1) {
                                 $('#score').html(found + " pairs");
                             } else {
                                 $('#score').html(found + " pair");

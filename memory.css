@@ -1,74 +1,150 @@
-body {
-  margin: 5px;
-  background-color: #034f84;
-  color: #fff;
-  font-family: "Comic Sans MS", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-/* nav bar*/
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background-attachment: fixed;
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* nav bar */
 
 .navbar {
   overflow: hidden;
-  /* background-color: #034f84; */
   position: fixed;
   top: 0;
   width: 100%;
-  padding-bottom: 10px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
 }
 
 .navbar a {
-  float: left;
   display: block;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.75);
   text-align: center;
-  padding: 10px 15px;
+  padding: 14px 20px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
 }
 
 .navbar a:hover {
-  background: rgba(31, 206, 212, 0.301);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
-.active {
-  background: rgba(31, 206, 212, 0.301);
+.navbar a.active {
+  background: rgba(102, 126, 234, 0.4);
   color: #fff;
 }
 
-/* cards */
+/* header */
+
+header {
+  padding-top: 70px;
+  text-align: center;
+}
+
+header p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 6px 0 12px;
+}
+
+#score-container {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  display: inline-block;
+  padding: 6px 24px;
+  margin-bottom: 12px;
+  min-width: 180px;
+}
+
+/* controls */
+
+#game-controls {
+  text-align: right;
+  padding: 0 16px 12px;
+}
+
+.flip-card-btn {
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 22px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.flip-card-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.flip-card-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+/* card grid */
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(91px, 1fr));
-  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+  gap: 12px;
+  padding: 0 16px 24px;
   clear: both;
 }
 
 .box {
-  border-radius: 25px;
-  border-radius: 5px;
-  font-size: 150%;
+  border-radius: 12px;
 }
 
 .flip-card {
-  border-radius: 25px;
   background-color: transparent;
-  /* width: 120px; */
-  height: 105px;
+  height: 110px;
   perspective: 1000px;
 }
 
 .flip-card-inner {
-  border-radius: 10px;
+  border-radius: 12px;
   position: relative;
   width: 100%;
   height: 100%;
-  text-size: larger;
   text-align: center;
-  transition: transform 0.6s;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.flip-card-inner:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .flipped {
@@ -77,85 +153,43 @@ body {
 
 .flip-card-front,
 .flip-card-back {
-  border-radius: 10px;
+  border-radius: 12px;
   position: absolute;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
-  /* Safari */
   backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* controls */
-
-#score-container {
-  font-size: 22px;
-  margin: 0 auto;
-  width: 22%;
+.flip-card-front p,
+.flip-card-back p {
+  margin: 0;
 }
 
-#game-controls {
-  float: right;
-  margin-top: 5px;
-  margin-bottom: 16px;
-  margin-left: 1em;
-  margin-right: 1em;
-}
+/* responsive */
 
-.flip-card-btn {
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #000000;
-  background-color: #fefbd8;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 5px #999;
-}
-
-.flip-card-btn:hover {
-  background-color: #92a8d1;
-}
-
-.flip-card-btn:active {
-  background-color: #92a8d1;
-  box-shadow: 0 5px #999;
-  transform: translateY(4px);
-}
-
-/*------------------------------------*\
-	$IPHONE
-\*------------------------------------*/
-/* @media screen and (max-device-width: 480px){
-  body{
-      -webkit-text-size-adjust:none;
-      font-family:Helvetica, Arial, Verdana, sans-serif;
-      padding:5px;
-  }
-} */
-
-/* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 992px) {
   body {
-    margin: 10px;
+    margin: 0;
   }
 
   #score-container {
     font-size: 18px;
-    float: left;
-    width: 25%;
   }
 }
 
-/* On screens that are 600px or less, set the background color to olive */
 @media screen and (max-width: 600px) {
-  body {
-    margin: 5px;
+  #score-container {
+    font-size: 14px;
+    min-width: 140px;
+    padding: 5px 16px;
   }
 
-  #score-container {
-    font-size: 12px;
-    float: left;
-    width: 27%;
+  .wrapper {
+    gap: 8px;
+    padding: 0 10px 16px;
   }
 }
